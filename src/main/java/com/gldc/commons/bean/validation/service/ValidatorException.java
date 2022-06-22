@@ -1,5 +1,6 @@
 package com.gldc.commons.bean.validation.service;
 
+import com.gldc.commons.bean.validation.Validation;
 import com.gldc.commons.bean.validation.ValidationIssue;
 import com.google.common.base.Joiner;
 
@@ -15,18 +16,15 @@ import java.util.List;
  */
 public final class ValidatorException extends RuntimeException {
 
-    private final List<ValidationIssue> issues;
+    private final Validation validation;
 
-    public ValidatorException(ValidationIssue... issues) {
-        this(Arrays.asList(issues));
+    public ValidatorException(Validation validation) {
+        super(validation.toString());
+        this.validation = validation;
     }
 
-    public ValidatorException(Collection<ValidationIssue> issues) {
-        super("[" + Joiner.on("],[").join(issues) + "]");
-        this.issues = new ArrayList<>(issues);
+    public Validation getValidation() {
+        return validation;
     }
 
-    public List<ValidationIssue> getIssues() {
-        return issues;
-    }
 }

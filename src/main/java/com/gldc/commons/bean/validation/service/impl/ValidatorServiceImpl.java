@@ -35,7 +35,7 @@ public final class ValidatorServiceImpl implements ValidatorService {
     public <T> void validateAndThrow(T object, Class<?> scope) throws ValidatorException {
         Validation validation = validateAndGet(object, scope);
         if (validation.hasAnyError()) {
-            throw new ValidatorException(validation.getIssues());
+            throw new ValidatorException(validation);
         }
     }
 

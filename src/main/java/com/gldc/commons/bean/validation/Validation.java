@@ -1,7 +1,5 @@
 package com.gldc.commons.bean.validation;
 
-import com.gldc.commons.util.CollectionUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,6 +12,12 @@ public interface Validation {
 
     List<ValidationIssue> getIssues();
 
+    default List<ValidationIssue> getErrors() {
+        return getIssues().stream()
+                .filter(i -> i.getType() == ValidationIssue.Type.ERROR)
+                .collect(Collectors.toList());
+    }
+
     default List<FieldIssue> getFieldIssues() {
         return getIssues().stream()
                 .filter(i -> i instanceof FieldIssue)
@@ -21,8 +25,16 @@ public interface Validation {
                 .collect(Collectors.toList());
     }
 
+    default List<FieldIssue> getFieldErrors() {
+        return getIssues().stream()
+                .filter(i -> i.getType() == ValidationIssue.Type.ERROR)
+                .filter(i -> i instanceof FieldIssue)
+                .map(i -> (FieldIssue) i)
+                .collect(Collectors.toList());
+    }
+
     default boolean isEmpty() {
-        return CollectionUtils.isEmpty(getIssues());
+        return getIssues().isEmpty();
     }
 
     default boolean hasAnyError() {
