@@ -23,13 +23,16 @@ public final class HttpUtils {
     }
 
     public static boolean isValidationResponse(WebApplicationException ex) {
-        String body = ex.getResponse().readEntity(String.class);
-        return JsonUtils.readString(body, ValidationResponse.class) != null;
+        return toValidationResponse(ex) != null;
     }
 
     public static boolean isErrorResponse(WebApplicationException ex) {
+        return toErrorResponse(ex) != null;
+    }
+
+    public static ValidationResponse toValidationResponse(WebApplicationException ex) {
         String body = ex.getResponse().readEntity(String.class);
-        return JsonUtils.readString(body, ValidationResponse.class) != null;
+        return JsonUtils.readString(body, ValidationResponse.class);
     }
 
     public static ErrorResponse toErrorResponse(WebApplicationException ex) {
