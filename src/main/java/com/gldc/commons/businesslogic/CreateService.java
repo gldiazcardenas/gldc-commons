@@ -1,7 +1,6 @@
 package com.gldc.commons.businesslogic;
 
 import com.gldc.commons.bean.Domain;
-import com.gldc.commons.bean.validation.service.ValidatorException;
 
 import java.io.Serializable;
 

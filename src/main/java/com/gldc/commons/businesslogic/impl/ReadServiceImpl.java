@@ -9,7 +9,7 @@ import com.gldc.commons.util.ReflectionUtils;
 
 import java.io.Serializable;
 
-public class ReadServiceImpl <D extends Domain<ID>, E extends Entity<ID>, ID extends Serializable>
+public class ReadServiceImpl<D extends Domain<ID>, E extends Entity<ID>, ID extends Serializable>
         extends AbstractReadService<D, E, ID> {
 
     private final Repository<E, ID> repository;

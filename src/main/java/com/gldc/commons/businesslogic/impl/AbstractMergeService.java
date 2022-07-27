@@ -51,7 +51,7 @@ public abstract class AbstractMergeService<D extends Domain<ID>, E extends Entit
     protected abstract E convertToEntity(D domainBean) throws ConverterException;
 
     /**
-     * Merges the data of the {@code newDomain} into the {@code currentDomain}
+     * Merges the data of the {@code newDomain} into the {@code currentDomain}.
      * @param currentDomain The current state of the object, will be modified during the merge.
      * @param newDomain The new (partial) state of the object.
      * @throws MergerException In case the merge cannot be done.

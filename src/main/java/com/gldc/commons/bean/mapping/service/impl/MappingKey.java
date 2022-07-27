@@ -7,7 +7,7 @@ import java.util.Objects;
  *
  * @author Gabriel Diaz, 17/12/2020.
  */
-class MappingKey {
+final class MappingKey {
 
     private Class<?> sourceClass;
     private Class<?> targetClass;

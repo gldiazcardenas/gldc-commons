@@ -2,10 +2,10 @@ package com.gldc.commons.businesslogic.impl;
 
 import com.gldc.commons.bean.Domain;
 import com.gldc.commons.businesslogic.CreateService;
+import com.gldc.commons.businesslogic.ObjectNotFoundException;
 import com.gldc.commons.businesslogic.ServiceFacade;
 import com.gldc.commons.businesslogic.DeleteService;
 import com.gldc.commons.businesslogic.MergeService;
-import com.gldc.commons.businesslogic.ObjectNotFoundException;
 import com.gldc.commons.businesslogic.ReadService;
 import com.gldc.commons.businesslogic.UpdateService;
 
@@ -38,22 +38,22 @@ public class ServiceFacadeImpl<D extends Domain<ID>, ID extends Serializable> im
     }
 
     @Override
-    public void delete(ID id) {
+    public void delete(ID id) throws ObjectNotFoundException {
         deleteService.delete(id);
     }
 
     @Override
-    public void update(ID id, D domainBean) {
+    public void update(ID id, D domainBean) throws ObjectNotFoundException {
         updateService.update(id, domainBean);
     }
 
     @Override
-    public void merge(ID id, D domainBean) {
+    public void merge(ID id, D domainBean) throws ObjectNotFoundException {
         mergeService.merge(id, domainBean);
     }
 
     @Override
-    public D findById(ID id) {
+    public D findById(ID id) throws ObjectNotFoundException {
         return readService.findById(id);
     }
 
